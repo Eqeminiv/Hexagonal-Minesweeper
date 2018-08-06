@@ -117,29 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ikonka_test" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ikonka test.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_77630" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\77630.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAALYAAACuCAIAAAAUF2ClAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wwAADsMBx2+oZAAAAiNJREFUeF7t0rFpHWEQRlGV4eIVqQjV5C4sCzYb5BvNwwPnMBts9v1w3/7Az359
+        vkuEf5EIQSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAkQpAI
+        QSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAk
+        QpAIQSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAkQpAIQSIE
+        iRAkQpAIQSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAkQpAI
+        QSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAkQpAIQSIEiRAk
+        QpAIQSKEY4m8ffw+es8DDpLIi+55wEESedE9DzjoaiLP/3/v3OBJIrvODZ4ksuvc4Ekiu84NniSy69zg
+        SSK7zg2eJLLr3OBJIrvODZ4ksuvc4Ekiu84NniSy69zgSSK7zg2eJLLr3OBJIrvODZ4ksuvc4Ekiu84N
+        niSy69zgSSK7zg2eJLLr3OBJIrvODZ6uJnLungccJJEX3fOAgyTyonsecNCxRHg9iRAkQpAIQSIEiRAk
+        QpAIQSIEiRAkQvhO5O/n3I/3+f4FLofGXElZwdwAAAAASUVORK5CYII=
+</value>
   </data>
 </root>
