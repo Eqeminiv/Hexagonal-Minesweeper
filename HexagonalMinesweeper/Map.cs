@@ -14,10 +14,7 @@ namespace HexagonalMinesweeper
         private String[,] neighbourField;
         private int bombCount;
         private Image[] numbers;
-        private Image flagImg;
         private int remainingTiles;
-
-
 
         bool isDefined = false;
         bool shouldDraw = false;
@@ -35,7 +32,6 @@ namespace HexagonalMinesweeper
 
         public void setField(int[,] field, int bombCount)
         {
-            flagImg = HexagonalMinesweeper.Properties.Resources.ikonka_test;
             numbers = new Image[7];
             loadImages();
             this.field = field;
@@ -100,92 +96,70 @@ namespace HexagonalMinesweeper
             }
         }
 
-        public void DrawHexGrid(Graphics g, Pen pen,
-            float xmin, float xmax, float ymin, float ymax,
-            float height)
+        public void DrawHexMap(Graphics g, Pen pen, float height)
         {
-            // Loop until a hexagon won't fit.
+            PointF[] hexPoints;
             for (int row = 0; row < field.GetLength(1); row++)
             {
-                PointF[] points = HexToPoints(height, row, 0);
-
-                if (points[4].Y > ymax) break;
-
                 for (int col = 0; col < field.GetLength(0); col++)
                 {
-                    points = HexToPoints(height, row, col);
-
-                    if (points[3].X > xmax) break;
-
-                    if (points[4].Y <= ymax)
-                    {
-                        g.DrawPolygon(pen, points);
-
-                    }
+                    hexPoints = HexToCoords(height, row, col);
+                    g.DrawPolygon(pen, hexPoints);                   
                 }
             }
         }
-
         public void DrawBombs(Graphics g, Brush brush, float height)
         {
-            PointF[] points;
+            PointF[] hexPoints;
             for (int row = 0; row < field.GetLength(1); row++)
             {
                 for (int col = 0; col < field.GetLength(0); col++)
                 {
-                    points = HexToPoints(height, row, col);
+                    hexPoints = HexToCoords(height, row, col);
                     if (field[col, row] == 1)
-                        g.FillPolygon(brush, points);
+                        g.FillPolygon(brush, hexPoints);
                 }
             }
 
         }
         public void DrawRevealed(Graphics g, Brush brush, float height)
         {
-            PointF[] points;
+            PointF[] hexPoints;
             for (int row = 0; row < field.GetLength(1); row++)
             {
                 for (int col = 0; col < field.GetLength(0); col++)
                 {
-                    points = HexToPoints(height, row, col);
+                    hexPoints = HexToCoords(height, row, col);
                     if (field[col, row] == -1)
                     {
-                        g.FillPolygon(brush, points);
+                        g.FillPolygon(brush, hexPoints);
                         if (neighbourField[col, row] == "1")
-                            g.DrawImage(numbers[1], points[1].X - 20, points[2].Y - 10);
+                            g.DrawImage(numbers[1], hexPoints[1].X - 20, hexPoints[2].Y - 10);
                         else if (neighbourField[col, row] == "2")
-                            g.DrawImage(numbers[2], points[1].X - 20, points[1].Y - 10);
+                            g.DrawImage(numbers[2], hexPoints[1].X - 20, hexPoints[1].Y - 10);
                         else if (neighbourField[col, row] == "3")
-                            g.DrawImage(numbers[3], points[1].X - 20, points[1].Y - 10);
+                            g.DrawImage(numbers[3], hexPoints[1].X - 20, hexPoints[1].Y - 10);
                         else if (neighbourField[col, row] == "4")
-                            g.DrawImage(numbers[4], points[1].X - 20, points[1].Y - 10);
+                            g.DrawImage(numbers[4], hexPoints[1].X - 20, hexPoints[1].Y - 10);
                         else if (neighbourField[col, row] == "5")
-                            g.DrawImage(numbers[5], points[1].X - 20, points[1].Y - 10);
+                            g.DrawImage(numbers[5], hexPoints[1].X - 20, hexPoints[1].Y - 10);
                         else if (neighbourField[col, row] == "6")
-                            g.DrawImage(numbers[6], points[1].X - 20, points[1].Y - 10);
-
-                        //g.DrawString(neighbourField[col, row], SystemFonts.MenuFont, Brushes.Black, points[4].X, points[4].Y - (height / 2));
+                            g.DrawImage(numbers[6], hexPoints[1].X - 20, hexPoints[1].Y - 10);
                     };
                 }
             }
         }
-
         public void DrawFlags(Graphics g, Brush brush, float height)
         {
-            PointF[] points;
+            PointF[] hexPoints;
             for (int row = 0; row < flagField.GetLength(1); row++)
             {
                 for (int col = 0; col < flagField.GetLength(0); col++)
                 {
-                    points = HexToPoints(height, row, col);
+                    hexPoints = HexToCoords(height, row, col);
                     if (flagField[col, row] == 1)
                     {
-                        g.FillPolygon(brush, points);
-                        //g.DrawImage(flagImg, points[1].X - 3, points[2].Y + 5);
-                        
-
-
-                        //g.DrawString(neighbourField[col, row], SystemFonts.MenuFont, Brushes.Black, points[4].X, points[4].Y - (height / 2));
+                        g.FillPolygon(brush, hexPoints);
                     };
                 }
             }
@@ -404,189 +378,18 @@ namespace HexagonalMinesweeper
 
         }
 
-        public bool isBombOnSurrounding(int col, int row)
-        {
-            if (col % 2 == 1)
-            {
-                if (row == 0)
-                {
-                    if (field.GetLength(0) % 2 == 0 && col == field.GetLength(0) - 1 && (CheckFieldValue(col - 1, row) == 1 ||
-                        CheckFieldValue(col - 1, row + 1) == 1 || CheckFieldValue(col, row + 1) == 1))
-                        return true;
-                    else if (field.GetLength(0) % 2 == 0 && col != field.GetLength(0) - 1)
-                    {
-                        if (CheckFieldValue(col - 1, row) == 1 || CheckFieldValue(col - 1, row + 1) == 1 || CheckFieldValue(col, row + 1) == 1 ||
-                            CheckFieldValue(col + 1, row + 1) == 1 || CheckFieldValue(col + 1, row) == 1)
-                            return true;
-                        else
-                            return false;
-                    }
-                    else
-                        return false;
-                }
-                else if (row == field.GetLength(1) - 1)
-                {
-                    if (field.GetLength(0) % 2 == 0 && col == field.GetLength(0) - 1 && (CheckFieldValue(col - 1, row) == 1 ||
-                        CheckFieldValue(col, row - 1) == 1))
-                        return true;
-                    else if (field.GetLength(0) % 2 == 0 && col != field.GetLength(0) - 1)
-                    {
-                        if (CheckFieldValue(col - 1, row) == 1 || CheckFieldValue(col + 1, row) == 1 ||
-                            CheckFieldValue(col, row - 1) == 1)
-                            return true;
-                        else
-                            return false;
-                    }
-                    else
-                        return false;
-                }
-                else
-                {
-                    if (field.GetLength(0) % 2 == 0 && col == field.GetLength(0) - 1 &&
-                     (CheckFieldValue(col - 1, row) == 1 || CheckFieldValue(col - 1, row + 1) == 1 ||
-                      CheckFieldValue(col, row + 1) == 1 || CheckFieldValue(col, row - 1) == 1))
-                        return true;
-                    else if (field.GetLength(0) % 2 == 0 && col != field.GetLength(0) - 1)
-                    {
-                        if (CheckFieldValue(col - 1, row) == 1 || CheckFieldValue(col - 1, row + 1) == 1 ||
-                            CheckFieldValue(col, row + 1) == 1 || CheckFieldValue(col + 1, row + 1) == 1 ||
-                            CheckFieldValue(col + 1, row) == 1 || CheckFieldValue(col, row - 1) == 1)
-                            return true;
-                        else
-                            return false;
-                    }
-                    else
-                        return false;
-                }
-
-
-
-            }
-            else
-            {
-                if (row == 0)
-                {
-                    if (col == 0)
-                    {
-                        if (CheckFieldValue(col, row + 1) == 1)
-                            return true;
-                        if (CheckFieldValue(col + 1, row) == 1)
-                            return true;
-                        return false;
-                    }
-                    else if (field.GetLength(0) % 2 == 1 && col == field.GetLength(0) - 1)
-                    {
-                        if (CheckFieldValue(col - 1, row) == 1)
-                            return true;
-                        if (CheckFieldValue(col, row + 1) == 1)
-                            return true;
-                        return false;
-                    }
-                    else
-                    {
-                        if (CheckFieldValue(col - 1, row) == 1)
-                            return true;
-                        if (CheckFieldValue(col, row + 1) == 1)
-                            return true;
-                        if (CheckFieldValue(col + 1, row) == 1)
-                            return true;
-                        return false;
-                    }
-                }
-                else if (row == field.GetLength(1) - 1)
-                {
-                    if (col == 0)
-                    {
-                        if (CheckFieldValue(col + 1, row - 1) == 1)
-                            return true;
-                        if (CheckFieldValue(col + 1, row) == 1)
-                            return true;
-                        if (CheckFieldValue(col, row - 1) == 1)
-                            return true;
-                        return false;
-                    }
-                    else if (field.GetLength(0) % 2 == 1 && col == field.GetLength(0) - 1)
-                    {
-                        if (CheckFieldValue(col - 1, row - 1) == 1)
-                            return true;
-                        if (CheckFieldValue(col - 1, row) == 1)
-                            return true;
-                        if (CheckFieldValue(col, row - 1) == 1)
-                            return true;
-                        return false;
-                    }
-                    else
-                    {
-                        if (CheckFieldValue(col - 1, row - 1) == 1)
-                            return true;
-                        if (CheckFieldValue(col - 1, row) == 1)
-                            return true;
-                        if (CheckFieldValue(col + 1, row - 1) == 1)
-                            return true;
-                        if (CheckFieldValue(col + 1, row) == 1)
-                            return true;
-                        if (CheckFieldValue(col, row - 1) == 1)
-                            return true;
-                        return false;
-                    }
-                }
-                else
-                {
-                    if (col == 0)
-                    {
-                        if (CheckFieldValue(col, row + 1) == 1)
-                            return true;
-                        if (CheckFieldValue(col + 1, row - 1) == 1)
-                            return true;
-                        if (CheckFieldValue(col + 1, row) == 1)
-                            return true;
-                        if (CheckFieldValue(col, row - 1) == 1)
-                            return true;
-                        return false;
-                    }
-                    else if (field.GetLength(0) % 2 == 1 && col == field.GetLength(0) - 1)
-                    {
-                        if (CheckFieldValue(col - 1, row - 1) == 1)
-                            return true;
-                        if (CheckFieldValue(col - 1, row) == 1)
-                            return true;
-                        if (CheckFieldValue(col, row + 1) == 1)
-                            return true;
-                        if (CheckFieldValue(col, row - 1) == 1)
-                            return true;
-                        return false;
-                    }
-                    else
-                    {
-                        if (CheckFieldValue(col - 1, row - 1) == 1)
-                            return true;
-                        if (CheckFieldValue(col - 1, row) == 1)
-                            return true;
-                        if (CheckFieldValue(col, row + 1) == 1)
-                            return true;
-                        if (CheckFieldValue(col + 1, row - 1) == 1)
-                            return true;
-                        if (CheckFieldValue(col + 1, row) == 1)
-                            return true;
-                        if (CheckFieldValue(col, row - 1) == 1)
-                            return true;
-                        return false;
-                    }
-                }
-            }
-        }
 
         public void RevealNeighbours(int col, int row)
         {
-            if (CheckFieldValue(col, row) == 1 || CheckFlagFieldValue(col, row) == 1) //field with bomb neighbouring -> stop function
+            if (CheckFieldValue(col, row) == 1 || CheckFlagFieldValue(col, row) == 1 ) //field with bomb neighbouring -> stop function
                 return;
             else
             {
-                if (col % 2 == 1) //when the collumn is odd
+                if (col % 2 == 1 ) //when the collumn is odd
                 {
                     if (CheckFieldValue(col, row) == 0) // 0 - unrevealed yet
                     {
-                        if (isBombOnSurrounding(col, row))
+                        if (!neighbourField[col,row].Equals("0"))
                         {
                             AlterField(col, row);
                             return;
@@ -660,7 +463,7 @@ namespace HexagonalMinesweeper
                     if (CheckFieldValue(col, row) == 0) // 0 - unrevealed yet
                     {
 
-                        if (isBombOnSurrounding(col, row))
+                        if (!neighbourField[col, row].Equals("0"))
                         {
                             AlterField(col, row);
                             return;
@@ -758,9 +561,8 @@ namespace HexagonalMinesweeper
 
 
         public void PointToHex(float x, float y, float height,
-            out int row, out int col)
+            out int row, out int col) // getting coordinates from mouse point
         {
-
             float width = HexWidth(height);
             col = (int)(x / (width * 0.75f));
 
@@ -769,15 +571,16 @@ namespace HexagonalMinesweeper
             else
                 row = (int)((y - height / 2) / height);
 
-            float testx = col * width * 0.75f;
-            float testy = row * height;
-            if (col % 2 == 1) testy += height / 2;
+            float testX = col * width * 0.75f;
+            float testY = row * height;
+            if (col % 2 == 1)
+                testY += height / 2;
 
             bool is_above = false, is_below = false;
-            float dx = x - testx;
+            float dx = x - testX;
             if (dx < width / 4)
             {
-                float dy = y - (testy + height / 2);
+                float dy = y - (testY + height / 2);
                 if (dx < 0.001)
                 {
                     if (dy < 0) is_above = true;
@@ -795,28 +598,29 @@ namespace HexagonalMinesweeper
 
             if (is_above)
             {
-                if (col % 2 == 0) row--;
+                if (col % 2 == 0)
+                    row--;
                 col--;
             }
             else if (is_below)
             {
-                if (col % 2 == 1) row++;
+                if (col % 2 == 1)
+                    row++;
                 col--;
             }
         }
 
-        private PointF[] HexToPoints(float height, float row, float col)
+        private PointF[] HexToCoords(float height, float row, float column)
         {
             float width = HexWidth(height);
             float y = height / 2;
-            float x = 0;
+            float x;
+            y = y + row * height;
 
-            y += row * height;
+            if (column % 2 == 1)
+                y = y + height / 2;
 
-            if (col % 2 == 1)
-                y += height / 2;
-
-            x += col * (width * 0.75f);
+            x = column * (width * 0.75f);
 
             return new PointF[]
                 {

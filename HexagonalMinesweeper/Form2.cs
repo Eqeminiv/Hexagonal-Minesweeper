@@ -11,17 +11,26 @@ using System.Windows.Forms;
 
 namespace HexagonalMinesweeper
 {
-    public partial class Form2 : Form
+    public partial class Options : Form
     {
-        public Form2()
+        public Options()
         {
             InitializeComponent();
+
+        }
+        public Options(decimal _rows, decimal _columns, decimal _bombs)
+        {
+            InitializeComponent();
+            rows.Value = _rows;
+            columns.Value = _columns;
+            bombs.Value = _bombs;
+
 
         }
 
         private void startButton_Click(object sender, EventArgs e)
         {
-            var t = new Thread(() => Application.Run(new Form1(rows.Value, columns.Value, bombs.Value)));
+            var t = new Thread(() => Application.Run(new Game(rows.Value, columns.Value, bombs.Value)));
             t.Start();
             this.Close();
         }

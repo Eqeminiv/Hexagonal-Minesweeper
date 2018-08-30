@@ -11,13 +11,17 @@ using System.Windows.Forms;
 
 namespace HexagonalMinesweeper
 {
-    public partial class Form3 : Form
+    public partial class GameOver : Form
     {
-        Form1 form;
-        public Form3(String time, Form1 form, bool isWinner)
+        Game form;
+        decimal rows, columns, bombs;
+        public GameOver(String time, Game form, bool isWinner, decimal _rows, decimal _columns, decimal _bombs)
         {
             InitializeComponent();
             this.form = form;
+            rows = _rows;
+            columns = _columns;
+            bombs = _bombs;
             if (isWinner)
             {
                 label1.Text = "Gratulacje! Pole minowe \r\nzostało zabezpieczone w czasie: \r\n" + time + " sekund";
@@ -32,7 +36,7 @@ namespace HexagonalMinesweeper
 
         private void playAgainButton_Click(object sender, EventArgs e)
         {
-            var t = new Thread(() => Application.Run(new Form2()));
+            var t = new Thread(() => Application.Run(new Options(rows, columns, bombs)));
             t.Start();
             form.Dispose();
         }

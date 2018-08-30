@@ -1,6 +1,6 @@
 ﻿namespace HexagonalMinesweeper
 {
-    partial class Form3
+    partial class GameOver
     {
         /// <summary>
         /// Required designer variable.
@@ -92,7 +92,7 @@
             this.labelWin.Text = "Wygrana!";
             this.labelWin.Visible = false;
             // 
-            // Form3
+            // GameOver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -103,7 +103,7 @@
             this.Controls.Add(this.playAgainButton);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form3";
+            this.Name = "GameOver";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Koniec gry";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form3_FormClosed);

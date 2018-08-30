@@ -14,18 +14,26 @@ namespace HexagonalMinesweeper
 {
     
 
-    public partial class Form1 : Form
+    public partial class Game : Form
     {
         Graphics g;
         double second;
         Map def = new Map();
         const int hexSize = 60;
         int[,] board;
+        bool wasted;
 
-        public Form1(decimal _rows, decimal _columns, decimal _bombs)
+        decimal savedRows, savedColumns, savedBombs;
+
+        public Game(decimal _rows, decimal _columns, decimal _bombs)
         {
             
             InitializeComponent();
+            savedRows = _rows;
+            savedColumns = _columns;
+            savedBombs = _bombs;
+
+            wasted = false;
             
             progres.Text = _bombs.ToString();
             second = 0;
@@ -41,80 +49,35 @@ namespace HexagonalMinesweeper
             //board = new int[getMaxHexCols(), pictureBox1.Height / hexSize]; //TODO
             board = new int[(int)_columns, (int)_rows];
             def.setField(board, (int)_bombs);
-            def.setIsDefined();
+           // def.setIsDefined();
             
         }
-       
-
-        int saveCol, saveRow;
 
 
-        //debug
-        /* float hexWidth;
-         int hexWidth2;
-         float ilosc;
-         int szerokoscPic;*/
-        //debug
-
-        bool wasted = false;
-        //int maxHexagons = 0;
         float zuzyta;
 
 
 
-        private int getMaxHexCols()
-        {
-            int maxHexagons = 0;
-            zuzyta = def.HexWidth(hexSize);
-            while (true)
-            {
-                zuzyta = zuzyta + (def.HexWidth(hexSize) * 3 / 4);
-                maxHexagons++;
-                if (zuzyta >= pictureBox1.ClientSize.Width)
-                    return maxHexagons;
-
-            }
-        }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
-        {
-            
+        {           
             e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
-
-            def.DrawHexGrid(e.Graphics, Pens.Black,
-                0, pictureBox1.Width,
-                0, pictureBox1.Height,
-                hexSize);
-
-            //if(columns.Enabled == false)
+            def.DrawHexMap(e.Graphics, Pens.Black, hexSize);
             def.DrawRevealed(e.Graphics, Brushes.LightBlue, hexSize);
             def.DrawFlags(e.Graphics, Brushes.DarkCyan, hexSize);
 
             if (wasted)
                 def.DrawBombs(e.Graphics, Brushes.DarkRed, hexSize);
-
         }
 
+        //debug
         private void pictureBox1_Resize(object sender, EventArgs e)
         {
             pictureBox1.Refresh();
         }
 
-        // Display the row and column under the mouse.
-        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
-        {
-            def.PointToHex(e.X, e.Y, hexSize, out int row, out int col);
-
-            if (checkBox1.Checked == true)
-            {
-                toolTip1.Active = true;
-                toolTip1.SetToolTip(pictureBox1, ("(" + col + ", " + row + ")"));
-            }
-            else
-                toolTip1.Active = false;
-        }
-
+        //debug
         private void Form1_Resize(object sender, EventArgs e)
         {
             checkBox1.Location = new System.Drawing.Point(pictureBox1.Width-100, checkBox1.Location.Y);
@@ -167,31 +130,29 @@ namespace HexagonalMinesweeper
 
         private void restartButton_Click(object sender, EventArgs e)
         {
-            var t = new Thread(() => Application.Run(new Form2()));
+            var t = new Thread(() => Application.Run(new Options(savedRows, savedColumns, savedBombs)));
             t.Start();
             this.Close();
         }
 
         private void gameOver()
         {
-            Form3 f;
+            GameOver f;
             wasted = true;
             pictureBox1.Enabled = false;
             timer1.Enabled = false;
-            f = new Form3(seconds.Text, this, false);
+            f = new GameOver(seconds.Text, this, false, savedRows, savedColumns, savedBombs);
+            Thread.Sleep(1000);
             f.ShowDialog();
 
         }
-
-
         private void winner()
         {
-            Form3 f;
-            //wasted = true;
-            
+            GameOver f;           
             pictureBox1.Enabled = false;
             timer1.Enabled = false;
-            f = new Form3(seconds.Text, this, true);
+            f = new GameOver(seconds.Text, this, true, savedRows, savedColumns, savedBombs);
+            Thread.Sleep(1000);
             f.ShowDialog();
            // this.Dispose();
             

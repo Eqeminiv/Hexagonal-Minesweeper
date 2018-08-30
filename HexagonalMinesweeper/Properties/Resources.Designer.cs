@@ -119,25 +119,5 @@ namespace HexagonalMinesweeper.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
-        /// <summary>
-        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap _77630 {
-            get {
-                object obj = ResourceManager.GetObject("_77630", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap ikonka_test {
-            get {
-                object obj = ResourceManager.GetObject("ikonka_test", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

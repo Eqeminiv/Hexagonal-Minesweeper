@@ -1,6 +1,6 @@
 ﻿namespace HexagonalMinesweeper
 {
-    partial class Form2
+    partial class Options
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Options));
             this.startButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -116,7 +116,7 @@
             this.rows.Size = new System.Drawing.Size(76, 20);
             this.rows.TabIndex = 8;
             this.rows.Value = new decimal(new int[] {
-            3,
+            5,
             0,
             0,
             0});
@@ -128,9 +128,9 @@
             this.label3.Location = new System.Drawing.Point(4, 53);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 15);
+            this.label3.Size = new System.Drawing.Size(54, 15);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Ilość bomb";
+            this.label3.Text = "Ilość min";
             // 
             // bombs
             // 
@@ -155,7 +155,7 @@
             0,
             0});
             // 
-            // Form2
+            // Options
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -173,7 +173,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Form2";
+            this.Name = "Options";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Opcje";

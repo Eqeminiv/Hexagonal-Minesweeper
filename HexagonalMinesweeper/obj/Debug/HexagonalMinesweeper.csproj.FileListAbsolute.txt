@@ -2,14 +2,13 @@ E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\bin\Debug\H
 E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\bin\Debug\HexagonalMinesweeper.exe
 E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\bin\Debug\HexagonalMinesweeper.pdb
 E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\obj\Debug\HexagonalMinesweeper.csprojResolveAssemblyReference.cache
-E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\obj\Debug\HexagonalMinesweeper.Form1.resources
 E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\obj\Debug\HexagonalMinesweeper.Properties.Resources.resources
 E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\obj\Debug\HexagonalMinesweeper.csproj.GenerateResource.cache
 E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\obj\Debug\HexagonalMinesweeper.csproj.CoreCompileInputs.cache
 E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\obj\Debug\HexagonalMinesweeper.exe
 E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\obj\Debug\HexagonalMinesweeper.pdb
-E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\obj\Debug\HexagonalMinesweeper.Form2.resources
 E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\bin\Debug\Properties\Resources.resx
-E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\bin\Debug\Properties\Resources.Designer.cs
 E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\bin\Debug\Map.cs
-E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\obj\Debug\HexagonalMinesweeper.Form3.resources
+E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\obj\Debug\HexagonalMinesweeper.Options.resources
+E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\obj\Debug\HexagonalMinesweeper.Game.resources
+E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\obj\Debug\HexagonalMinesweeper.GameOver.resources
