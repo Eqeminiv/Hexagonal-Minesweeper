@@ -24,7 +24,7 @@ namespace HexagonalMinesweeper
             bombs = _bombs;
             if (isWinner)
             {
-                label1.Text = "Gratulacje! Pole minowe \r\nzostało zabezpieczone w czasie: \r\n" + time + " sekund";
+                label1.Text = "Gratulacje! Pole minowe \r\nzostało zabezpieczone \r\nw czasie: \r\n" + time + " sekund";
                 labelWin.Visible = true;
             }
             else

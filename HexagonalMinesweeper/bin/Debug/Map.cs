@@ -554,59 +554,60 @@ namespace HexagonalMinesweeper
         }
 
 
-        public float HexWidth(float height)
+        public float HexWidth(float hexHeight)
         {
-            return (float)(4 * (height / 2 / Math.Sqrt(3)));
+            return (float)(4 * (hexHeight / 2 / Math.Sqrt(3)));
         }
 
 
-        public void PointToHex(float x, float y, float height,
-            out int row, out int col) // getting coordinates from mouse point
+        public void MouseToHexPoint(float x, float y, float hexHeight,
+             out int column, out int row) // getting coordinates from mouse point
         {
-            float width = HexWidth(height);
-            col = (int)(x / (width * 0.75f));
+            float hexWidth = HexWidth(hexHeight);
+            column = (int)(x / (hexWidth * 0.75f));
 
-            if (col % 2 == 0)
-                row = (int)(y / height);
+            if (column % 2 == 0)
+                row = (int)(y / hexHeight);
             else
-                row = (int)((y - height / 2) / height);
+                row = (int)((y - hexHeight / 2) / hexHeight);
 
-            float testX = col * width * 0.75f;
-            float testY = row * height;
-            if (col % 2 == 1)
-                testY += height / 2;
+            float areaX = column * hexWidth * 0.75f;
+            float areaY = row * hexHeight;
+            if (column % 2 == 1)
+                areaY = areaY + hexHeight / 2;
 
-            bool is_above = false, is_below = false;
-            float dx = x - testX;
-            if (dx < width / 4)
+            bool isHexAbove = false, isHexBelow = false;
+            float subX = x - areaX;
+            if (subX < hexWidth / 4)
             {
-                float dy = y - (testY + height / 2);
-                if (dx < 0.001)
+                float subY = y - (areaY + hexHeight / 2);
+                if (subX < 0.001)
                 {
-                    if (dy < 0) is_above = true;
-                    if (dy > 0) is_below = true;
+                    if (subY < 0)
+                        isHexAbove = true;
+                    if (subY > 0)
+                        isHexBelow = true;
                 }
-                else if (dy < 0)
-                {
-                    if (-dy / dx > Math.Sqrt(3)) is_above = true;
-                }
+                else if (subY < 0 && -subY / subX > Math.Sqrt(3))
+                        isHexAbove = true;
                 else
                 {
-                    if (dy / dx > Math.Sqrt(3)) is_below = true;
+                    if (subY / subX > Math.Sqrt(3))
+                        isHexBelow = true;
                 }
             }
 
-            if (is_above)
+            if (isHexAbove)
             {
-                if (col % 2 == 0)
+                if (column % 2 == 0)
                     row--;
-                col--;
+                column--;
             }
-            else if (is_below)
+            else if (isHexBelow)
             {
-                if (col % 2 == 1)
+                if (column % 2 == 1)
                     row++;
-                col--;
+                column--;
             }
         }
 

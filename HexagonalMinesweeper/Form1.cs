@@ -65,8 +65,7 @@ namespace HexagonalMinesweeper
 
             def.DrawHexMap(e.Graphics, Pens.Black, hexSize);
             def.DrawRevealed(e.Graphics, Brushes.LightBlue, hexSize);
-            def.DrawFlags(e.Graphics, Brushes.DarkCyan, hexSize);
-
+            def.DrawFlags(e.Graphics, Brushes.DarkCyan, hexSize)
             if (wasted)
                 def.DrawBombs(e.Graphics, Brushes.DarkRed, hexSize);
         }
@@ -94,7 +93,7 @@ namespace HexagonalMinesweeper
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
             int row, col;
-            def.PointToHex(e.X, e.Y, hexSize, out row, out col);
+            def.MouseToHexPoint(e.X, e.Y, hexSize, out col, out row);
             if (col >= 0 && col < board.GetLength(0) && row >= 0 && row <board.GetLength(1)
                 && e.Button == MouseButtons.Left && def.CheckFlagFieldValue(col,row) == 0)
             {

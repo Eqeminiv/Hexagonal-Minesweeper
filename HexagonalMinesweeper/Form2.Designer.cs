@@ -97,6 +97,7 @@
             0,
             0,
             0});
+            this.columns.ValueChanged += new System.EventHandler(this.columns_ValueChanged);
             // 
             // rows
             // 
@@ -120,6 +121,7 @@
             0,
             0,
             0});
+            this.rows.ValueChanged += new System.EventHandler(this.rows_ValueChanged);
             // 
             // label3
             // 

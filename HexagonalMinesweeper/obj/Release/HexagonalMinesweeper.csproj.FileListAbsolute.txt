@@ -1,0 +1,14 @@
+E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\bin\Release\Properties\Resources.resx
+E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\bin\Release\Map.cs
+E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\bin\Release\HexagonalMinesweeper.exe.config
+E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\bin\Release\HexagonalMinesweeper.exe
+E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\bin\Release\HexagonalMinesweeper.pdb
+E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\obj\Release\HexagonalMinesweeper.Game.resources
+E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\obj\Release\HexagonalMinesweeper.Options.resources
+E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\obj\Release\HexagonalMinesweeper.GameOver.resources
+E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\obj\Release\HexagonalMinesweeper.Properties.Resources.resources
+E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\obj\Release\HexagonalMinesweeper.csproj.GenerateResource.cache
+E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\obj\Release\HexagonalMinesweeper.csproj.CoreCompileInputs.cache
+E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\obj\Release\HexagonalMinesweeper.exe
+E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\obj\Release\HexagonalMinesweeper.pdb
+E:\Dokumenty\programowanie\HexagonalMinesweeper\HexagonalMinesweeper\obj\Release\HexagonalMinesweeper.csprojResolveAssemblyReference.cache

@@ -16,6 +16,7 @@ namespace HexagonalMinesweeper
         public Options()
         {
             InitializeComponent();
+            bombs.Maximum = rows.Value * columns.Value - 1;
 
         }
         public Options(decimal _rows, decimal _columns, decimal _bombs)
@@ -23,6 +24,7 @@ namespace HexagonalMinesweeper
             InitializeComponent();
             rows.Value = _rows;
             columns.Value = _columns;
+            bombs.Maximum = _rows * _columns - 1;
             bombs.Value = _bombs;
 
 
@@ -35,5 +37,14 @@ namespace HexagonalMinesweeper
             this.Close();
         }
 
+        private void rows_ValueChanged(object sender, EventArgs e)
+        {
+            bombs.Maximum = rows.Value * columns.Value - 1;
+        }
+
+        private void columns_ValueChanged(object sender, EventArgs e)
+        {
+            bombs.Maximum = rows.Value * columns.Value - 1;
+        }
     }
 }
